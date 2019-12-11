@@ -7,9 +7,9 @@ set /p mode=%question%
 
 if exist .\bin\ffmpeg.exe (
     if %mode% == 1 (
-        .\bin\ffmpeg.exe -y -hide_banner -i "%~1" -filter "minterpolate='fps=60'" "%~n1_60fps%~x1"
+        .\bin\ffmpeg.exe -y -hide_banner -i "%~1" -filter:v "minterpolate=fps=60" -c:a copy "%~n1_60fps%~x1"
     ) else if %mode% == 2 (
-        .\bin\ffmpeg.exe -y -hide_banner -i "%~1" -filter "minterpolate='fps=120'" "%~n1_120fps%~x1"
+        .\bin\ffmpeg.exe -y -hide_banner -i "%~1" -filter:v "minterpolate=fps=120" -c:a copy "%~n1_120fps%~x1"
     ) else (
         echo Invalid mode!
     )
